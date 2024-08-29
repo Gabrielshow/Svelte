@@ -39,101 +39,111 @@ fillRows();
 </script>
 
 <style>
+/* Ensure the app container scales properly */
 .app {
-	position: fixed;
-	top: 0px;
-	left: -50%;
-	transform: translateX(50%);
-	width: 100%;
-	height: 100%;
-	max-width: 400px;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
+/* Header styling with sticky positioning */
 .app .header {
-	position: sticky;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 50px;
-	background: #0badea;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0px 20px;
-	color: #fff;
-}
-.app .game{
-	width: 100%;
-	height: calc(100% - 50px);
-	background: #fff;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  background: #0badea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: #fff;
 }
 
-.app .game .row{
-	display: flex;
-	width: 100%;
-	height: calc(100% / 4);
+/* Game area styling */
+.app .game {
+  width: 100%;
+  height: calc(100vh - 50px); /* Adjust based on header height */
+  background: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Row styling to handle scaling properly */
+.app .game .row {
+  display: flex;
+  width: 100%;
+  height: 25%; /* Each row takes up 25% of the game area height */
+}
+
+/* Box styling for each tile */
 .app .game .row .box {
-	flex: 1;
-	border: 1px solid #555;
-	cursor: pointer;
+  flex: 1;
+  border: 1px solid #555;
+  cursor: pointer;
+  background: #fff; /* Ensure default background is white */
+  box-sizing: border-box; /* Include padding and border in width and height */
 }
 
+/* Black tile styling */
 .app .game .row .box.black {
-	background: black;
+  background: black;
 }
 
+/* Red tile animation */
 .app .game .row .box.red {
-	animation:  blinkRed 500ms ease-in-out infinite;
-	
+  animation: blinkRed 500ms ease-in-out infinite;
 }
 
+/* Animation for red tile */
 @keyframes blinkRed {
-	0%, 100% {
-	background: #fff;
-	}
-	50% {
-	background: tomato;
-	}
+  0%, 100% {
+    background: #fff;
+  }
+  50% {
+    background: tomato;
+  }
 }
 
-.result{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.8);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	gap: 10px;
+/* Result overlay styling */
+.result {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.result h2{
-font-size: 40px;
-color: #fff;
+.result h2 {
+  font-size: 2.5rem; /* Responsive font size */
+  color: #fff;
 }
 
-.result p{
-
-font-size: 20px;
-margin-bottom: 10px;
-color: #fff;
+.result p {
+  font-size: 1.5rem; /* Responsive font size */
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 .result button {
-padding: 10px 20px;
-cursor: pointer;
-font-size: 10px;
-border: 20px solid #fff;
-color: #fff;
-outline: none;
-font-weight: 500;
-background: transparent;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem; /* Responsive font size */
+  border: 2px solid #fff; /* Adjust border size */
+  color: #fff;
+  background: transparent;
+  font-weight: 500;
+  outline: none;
 }
+
 </style>
 
 <main class="app">
